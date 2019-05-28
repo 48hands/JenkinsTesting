@@ -16,9 +16,10 @@ pipeline {
         git(url: 'https://github.com/48hands/udemy-akka-stream.git', credentialsId: 'MyGitHubAccount', branch: 'master', changelog: true)
       }
     }
-    stage('Deploy') {
+    stage('Pull from Public Repository') {
       steps {
         sh 'echo "Deployment starting..."'
+        git(url: 'https://github.com/48hands/ruby-study.git', branch: 'master', changelog: true)
       }
     }
   }
