@@ -21,7 +21,7 @@ pipeline {
         }
         stage('GitPull2') {
           steps {
-            git(url: 'https://github.com/48hands/scala-advanced-learning.git', credentialsId: 'MyGitHubAccount')
+            git(url: 'https://github.com/48hands/scala-advanced-learning.git', credentialsId: 'MyGitHubAccount', branch: 'master')
           }
         }
       }
