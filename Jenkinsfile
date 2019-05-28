@@ -12,9 +12,18 @@ pipeline {
       }
     }
     stage('GitPull') {
-      steps {
-        git(url: 'https://github.com/48hands/ruby-study.git', branch: 'master', changelog: true, credentialsId: 'TestUserId')
-        sh 'ls -la'
+      parallel {
+        stage('GitPull') {
+          steps {
+            git(url: 'https://github.com/48hands/ruby-study.git', branch: 'master', changelog: true, credentialsId: 'TestUserId')
+            sh 'ls -la'
+          }
+        }
+        stage('GitPull2') {
+          steps {
+            git(url: 'https://github.com/48hands/scala-advanced-learning.git', credentialsId: 'Testing')
+          }
+        }
       }
     }
     stage('Deploy') {
